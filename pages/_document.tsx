@@ -6,7 +6,6 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
 } from 'next/document';
-import { Fonts } from '@lidofinance/lido-ui';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -26,12 +25,12 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
+        styles: [
           <>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        ),
+          </>,
+        ],
       };
     } finally {
       sheet.seal();
@@ -43,31 +42,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="icon" type="image/svg+xml" href="favicon-512x512.svg" />
-          {/*<link*/}
-          {/*  rel="apple-touch-icon"*/}
-          {/*  sizes="180x180"*/}
-          {/*  href="/apple-touch-icon.png"*/}
-          {/*/>*/}
-          {/*<link*/}
-          {/*  rel="icon"*/}
-          {/*  type="image/png"*/}
-          {/*  sizes="194x194"*/}
-          {/*  href="/favicon-194x194.png"*/}
-          {/*/>*/}
-          {/*<link*/}
-          {/*  rel="icon"*/}
-          {/*  type="image/png"*/}
-          {/*  sizes="32x32"*/}
-          {/*  href="/favicon-32x32.png"*/}
-          {/*/>*/}
-          {/*<link*/}
-          {/*  rel="icon"*/}
-          {/*  type="image/png"*/}
-          {/*  sizes="16x16"*/}
-          {/*  href="/favicon-16x16.png"*/}
-          {/*/>*/}
-          <Fonts />
+          <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         </Head>
         <body>
           <Main />
